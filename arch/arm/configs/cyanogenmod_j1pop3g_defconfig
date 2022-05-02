@@ -1427,7 +1427,7 @@ CONFIG_BCMDHD_NVRAM_PATH="/system/etc/wifi/bcmdhd.cal"
 # CONFIG_LIBERTAS is not set
 # CONFIG_WL_TI is not set
 # CONFIG_MWIFIEX is not set
-CONFIG_SC2331=m
+CONFIG_SC2331=y
 CONFIG_SC2331_MEM_ALLOC=y
 
 #
