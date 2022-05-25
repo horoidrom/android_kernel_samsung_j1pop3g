@@ -963,10 +963,6 @@ RX_SLEEP:
 		if (true == rx_chn->timeout_flag) {
 			rx_chn->timeout_flag = false;
 		}
-		if (14 == index) {
-			mdbg_sdio_read();
-			goto TX;
-		}
 		if (11 == index) {
 			mdbg_at_cmd_read();
 			goto TX;
