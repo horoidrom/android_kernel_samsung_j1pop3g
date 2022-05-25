@@ -1208,10 +1208,6 @@ static void marlinack_workq(void)
 
 }
 
-int time_d_value(struct timeval *start, struct timeval *end)
-{
-	return (end->tv_sec - start->tv_sec)*1000000 + (end->tv_usec - start->tv_usec);
-}
 
 static irqreturn_t marlinwake_irq_handler(int irq, void * para)
 {
