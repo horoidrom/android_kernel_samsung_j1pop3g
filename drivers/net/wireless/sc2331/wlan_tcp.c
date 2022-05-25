@@ -23,7 +23,7 @@
 #define TCP_ACK_WIN_L_SIZE       (20272)
 #define TCP_SESSION_TIMEOUT      (5)
 
-int time_d_value(extern struct timeval *start, extern struct timeval *end)
+int time_d_value(struct timeval *start, struct timeval *end)
 {
 	return (end->tv_sec - start->tv_sec) * 1000000 + (end->tv_usec -
 							  start->tv_usec);
