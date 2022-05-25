@@ -18,8 +18,10 @@ jobs:
 
     - name: Building Kernel
       run: |
+        export KBUILD_BUILD_USER=notnoelchannel
+        export KBUILD_BUILD_HOST=retardedmachine
         make -j2 cyanogenmod_j1pop3g_defconfig
-        make -j2
+        make -j16
 
     - name: Moving Output # CI only
       run: |
