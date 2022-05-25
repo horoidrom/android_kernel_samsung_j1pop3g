@@ -1093,7 +1093,7 @@ TX_SLEEP:
 	} while (!kthread_should_stop());
 	sdiodev_readchn_uninit(8);
 	sdiodev_readchn_uninit(9);
-	mdbg_sdio_read();
+	//mdbg_sdio_read(); we uncomment this
 	del_timer_sync(&(g_wlan.hw.wakeup_timer));
 	printke("%s exit\n", __func__);
 	atomic_set(&(g_wlan.wlan_trans.exit_status), 1);
