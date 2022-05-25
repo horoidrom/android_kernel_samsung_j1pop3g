@@ -294,7 +294,6 @@ extern void mdbg_at_cmd_read(void);
 extern void mdbg_loopcheck_read(void);
 extern void mdbg_assert_read(void);
 
-extern void mdbg_sdio_read(void);
 extern void marlin_pa_enable(bool enable);
 extern int set_wlan_status(int status);
 extern int set_marlin_wakeup(unsigned int chn, unsigned int user_id);
