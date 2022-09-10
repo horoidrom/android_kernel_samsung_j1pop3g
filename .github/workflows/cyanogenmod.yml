@@ -18,8 +18,8 @@ jobs:
 
     - name: Building Kernel
       run: |
-        export KBUILD_BUILD_USER=notnoelchannel
-        export KBUILD_BUILD_HOST=retardedmachine
+        export KBUILD_BUILD_USER=horoid
+        export KBUILD_BUILD_HOST=Horoid
         make -j2 cyanogenmod_j1pop3g_defconfig
         make -j16
 
