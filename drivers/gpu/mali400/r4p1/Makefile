@@ -33,26 +33,27 @@ ifeq ($(CONFIG_MACH_J1POP3G),y)
     DFS_MAX_FREQ = 460800
     DFS_MIN_FREQ = 153600
     GPU_FPGA = 0
+    ccflags-y += -I$(src)/linux/license/gpl
+else
+    # For customer releases the Linux Device Drivers will be provided as ARM proprietary and GPL releases:
+    # The ARM proprietary product will only include the license/proprietary directory
+    # The GPL product will only include the license/gpl directory
+    ifeq ($(wildcard $(src)/linux/license/gpl/*),)
+        ccflags-y += -I$(src)/linux/license/proprietary
+        ifeq ($(CONFIG_MALI400_PROFILING),y)
+        $(error Profiling is incompatible with non-GPL license)
+        endif
+        ifeq ($(CONFIG_PM_RUNTIME),y)
+            $(error Runtime PM is incompatible with non-GPL license)
+        endif
+        ifeq ($(CONFIG_DMA_SHARED_BUFFER),y)
+            $(error DMA-BUF is incompatible with non-GPL license)
+        endif
+        $(error Linux Device integration is incompatible with non-GPL license)
+    else
+        ccflags-y += -I$(src)/linux/license/gpl
 endif
 
-# For customer releases the Linux Device Drivers will be provided as ARM proprietary and GPL releases:
-# The ARM proprietary product will only include the license/proprietary directory
-# The GPL product will only include the license/gpl directory
-ifeq ($(wildcard $(src)/linux/license/gpl/*),)
-    ccflags-y += -I$(src)/linux/license/proprietary
-    ifeq ($(CONFIG_MALI400_PROFILING),y)
-        $(error Profiling is incompatible with non-GPL license)
-    endif
-    ifeq ($(CONFIG_PM_RUNTIME),y)
-        $(error Runtime PM is incompatible with non-GPL license)
-    endif
-    ifeq ($(CONFIG_DMA_SHARED_BUFFER),y)
-        $(error DMA-BUF is incompatible with non-GPL license)
-    endif
-    $(error Linux Device integration is incompatible with non-GPL license)
-else
-    ccflags-y += -I$(src)/linux/license/gpl
-endif
 
 ifeq ($(CONFIG_MALI400),y)
     MALI_ENABLE_GPU_CONTROL_IN_PARAM = 0
