@@ -235,3 +235,4 @@ VERSION_STRINGS += MALI_UPPER_HALF_SCHEDULING=$(MALI_UPPER_HALF_SCHEDULING)
 # Create file with Mali driver configuration
 $(src)/__malidrv_build_info.c:
 	@echo 'const char *__malidrv_build_info(void) { return "malidrv: $(VERSION_STRINGS)";}' > $(src)/__malidrv_build_info.c
+endif
